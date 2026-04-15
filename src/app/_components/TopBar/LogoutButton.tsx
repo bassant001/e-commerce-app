@@ -7,10 +7,7 @@ export default function LogoutButton() {
   const router = useRouter();
 
   async function handleLogOut() {
-    await signOut({ redirect: true }); 
-
-    router.refresh(); 
-    router.push("/");
+    await signOut({ callbackUrl: "/", redirect: true }); 
   }
 
   return (
