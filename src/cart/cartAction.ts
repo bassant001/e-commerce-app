@@ -4,6 +4,8 @@ import decodeAuthenticatedUserToken from "_/app/utils";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
+const baseUrl = process.env.NEXTAUTH_URL || "http://localhost:3000";
+
 export default async function addToProductCart(id: string) {
   const bodyobject = {
     productId: id,
@@ -231,7 +233,7 @@ export async function createOnlineOrder(cartId: string, bodyObject: any) {
   if (token) {
     try {
 
-      const res = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:3000`, {
+      const res = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${baseUrl}`, {
 
         method: "POST", headers: 
         {
