@@ -175,10 +175,7 @@ export async function getUserCart(): Promise<CartResponse | undefined> {
   try {
     const res = await fetch('https://ecommerce.routemisr.com/api/v2/cart', {
       headers: { 'token': tk },
-      cache :'force-cache',
-      next:{
-        tags: ['cagetUserCartrt'],
-      }
+      cache: 'no-store'
     });
     const finalres = await res.json();
     console.log("getUserCart", finalres);
@@ -245,10 +242,7 @@ export async function getUserWishlist(): Promise<WishlistResponse | undefined> {
   try {
     const res = await fetch('https://ecommerce.routemisr.com/api/v1/wishlist', {
       headers: { 'token': tk },
-      cache :'force-cache',
-      next:{
-        tags: ['getUserWishlist'],
-      }
+      cache: 'no-store'
     });
     const finalres = await res.json();
     console.log("getUserWishlist", finalres);
