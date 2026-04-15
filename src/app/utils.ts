@@ -3,7 +3,7 @@ import { decode } from "next-auth/jwt";
 
 export default async function decodeAuthenticatedUserToken(): Promise<string | null> {
   const cookie = await cookies();
-  const nextAuthToken = cookie.get("next-auth.session-token")?.value;
+  const nextAuthToken = cookie.get("next-auth.session-token")?.value || cookie.get("__Secure-next-auth.session-token")?.value;
 
   //DECODE
   const jwtResponse = await decode({
